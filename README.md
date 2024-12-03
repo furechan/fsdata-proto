@@ -50,8 +50,16 @@ samples.save(name, data)
 
 ## Formats
 
-Currently the data is limited to pandas dataframes saved in the `parquet` format.
+Currently the library is limited to pandas dataframes saved in the `parquet` format.
 
+
+## Installation
+
+You can install the package with `pip`
+
+```
+pip install fsdata
+```
 
 ## Requirements
 

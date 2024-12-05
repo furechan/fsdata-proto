@@ -116,3 +116,4 @@ def __dir__():
     return result
 
 
+__all__ = ["Collection"]

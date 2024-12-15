@@ -70,6 +70,7 @@ pip install fsdata
 
 
 ## Related Projects and Resources
+- [intake](https://github.com/intake/intake) Lightweight package for finding, investigating, loading and disseminating data.
 - [pandas](https://github.com/pandas-dev/pandas) Flexible and powerful data analysis / manipulation library for Python
 - [pyarrow](https://github.com/apache/arrow) Universal columnar format and multi-language toolbox
 - [parquet](https://github.com/apache/parquet-format) Apache Parquet Format

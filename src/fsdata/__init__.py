@@ -1,4 +1,14 @@
-"""fsspec data mapper"""
+"""
+fsdata
+
+fsspec based data mapper
+
+Configguration file fsdata.ini
+
+[samples]
+path = $HOME/samples
+
+"""
 
 import pandas as pd
 
@@ -52,7 +62,7 @@ def __getattr__(name: str):
 
 
 def __dir__():
-    """list of attributes in module"""
+    """list collection names"""
     config = read_config()
 
     result = __all__ + [name.lower() for name in config.sections()]

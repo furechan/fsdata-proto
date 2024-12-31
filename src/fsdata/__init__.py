@@ -37,7 +37,7 @@ class Collection:
         return f"Collection({self.name!r}, {self.path!r})"
 
     def items(self):
-        return [p.stem for p in self.path.glob("*")]
+        return [p.stem for p in self.path.glob("*.parquet")]
 
     def load(self, name):
         file = self.path.joinpath(f"{name}.parquet")

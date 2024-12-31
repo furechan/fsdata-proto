@@ -3,7 +3,9 @@ fsdata
 
 fsspec based data mapper
 
-Configguration file fsdata.ini
+Configuration file `fsdata.ini`
+
+Sample configuration:
 
 [samples]
 path = $HOME/samples

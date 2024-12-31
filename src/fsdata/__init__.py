@@ -1,7 +1,8 @@
 """
 fsdata
 
-fsspec based data mapper
+Collectiions of data files in a directory or cloud location
+Data is saved as parquet files with the extension `.parquet`
 
 Configuration file `fsdata.ini`
 
@@ -21,6 +22,8 @@ from upath import UPath
 from .config import read_config
 from .utils import check_path
 
+__all__ = ["Collection"]
+
 
 class Collection:
     """collection of data files"""
@@ -39,7 +42,7 @@ class Collection:
     def load(self, name):
         file = self.path.joinpath(f"{name}.parquet")
         return pd.read_parquet(file.as_uri())
-    
+
     def save(self, name, data):
         file = self.path.joinpath(f"{name}.parquet")
         data.to_parquet(file.as_uri())
@@ -50,6 +53,7 @@ class Collection:
             file.unlink()
         else:
             raise FileNotFoundError(file)
+
 
 @lru_cache
 def __getattr__(name: str):
@@ -64,12 +68,9 @@ def __getattr__(name: str):
 
 
 def __dir__():
-    """list collection names"""
+    """list package contents including collection names"""
     config = read_config()
 
     result = __all__ + [name.lower() for name in config.sections()]
 
     return result
-
-
-__all__ = ["Collection"]

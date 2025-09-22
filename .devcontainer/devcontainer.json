@@ -1,6 +1,12 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-  
+	"image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+
+	"hostRequirements": {
+    	"cpus": 4,
+    	"memory": "8gb",
+    	"storage": "32gb"
+  	},
+	
   "features": {
       "ghcr.io/va-h/devcontainers-features/uv:1": {}
   },

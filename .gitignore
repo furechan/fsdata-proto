@@ -4,12 +4,10 @@
 __pycache__/
 build/
 dist/
-venv/
 .venv/
 .idea/
 .tox/
 .nox/
-.env
 *.bak
 *.log
 *.pyc

@@ -1,6 +1,30 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  
   "features": {
       "ghcr.io/va-h/devcontainers-features/uv:1": {}
-  }
+  },
+  
+  "secrets": {
+		"AWS_REGION": { "description": "AWS Region"},
+		"AWS_ACCESS_KEY_ID": { "description": "AWS access key ID"},
+		"AWS_SECRET_ACCESS_KEY": { "description": "AWS secret access key"}
+	},
+  
+  "containerEnv": {
+    "UV_LINK_MODE": "copy",
+    "PYTHONUNBUFFERED": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+	},
+
+  "customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"ms-toolsai.jupyter",
+				"tamasfe.even-better-toml"
+			]
+		}
+	}
+  
 }

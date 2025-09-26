@@ -24,7 +24,14 @@ classifiers = [
 ]
 
 [dependency-groups]
-dev = ["pytest", "ipykernel", "nbmask", "tox", "pydev-toy"]
+dev = [
+    "pytest",
+    "ipykernel",
+    "nbmask",
+    "tox",
+    "pydev-toy",
+    "jupyter>=1.1.1",
+]
 
 [tool.pydev]
 allow-publish = true

@@ -16,6 +16,7 @@ class ExpandVars(Interpolation):
 def config_dirs():
     """list of config dirs from environment or defaults"""
     config_dirs = os.getenv("FSDATA_CONFIG_DIRS", None)
+
     if config_dirs:
         return config_dirs.split(os.pathsep)
     

@@ -619,6 +619,7 @@ dev = [
     { name = "pydev-toy", version = "0.0.10", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
     { name = "pydev-toy", version = "0.0.12", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.10'" },
     { name = "pytest" },
+    { name = "tomli" },
     { name = "tox" },
 ]
 
@@ -636,6 +637,7 @@ dev = [
     { name = "nbmask" },
     { name = "pydev-toy" },
     { name = "pytest" },
+    { name = "tomli", specifier = ">=2.2.1" },
     { name = "tox" },
 ]
 

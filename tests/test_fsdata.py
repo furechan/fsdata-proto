@@ -16,9 +16,9 @@ def test_workdir():
     assert os.path.exists(workdir)
 
 def test_fsdata():
-    from fsdata import samples
-    assert isinstance(samples.items(), list)
-    assert isinstance(samples.load("df"), pd.DataFrame)
+    from fsdata import testdata
+    assert isinstance(testdata.items(), list)
+    assert isinstance(testdata.load("df"), pd.DataFrame)
 
 
 

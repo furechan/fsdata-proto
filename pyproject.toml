@@ -9,7 +9,7 @@ module-name = "fsdata"
 [project]
 name = "fsdata"
 version = "0.0.3"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 readme = "README.md"
 license = "MIT"
 description = "Simple data access layer over fsspec"

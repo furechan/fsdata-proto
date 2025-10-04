@@ -18,7 +18,7 @@ def check_path(path):
         path = os.path.expanduser(path)
 
     if not path.startswith(("/", "\\")):
-        raise ValueError(f"Path {path!r} is not absolute!")
+        raise ValueError(f"Path {path!r} must be absolute!")
     
     return prefix + ":" + path
 

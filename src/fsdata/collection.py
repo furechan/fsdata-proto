@@ -21,15 +21,15 @@ class Collection:
     def items(self):
         return [p.stem for p in self.path.glob("*.parquet")]
 
-    def load(self, name):
+    def load(self, name: str):
         file = self.path.joinpath(f"{name}.parquet")
         return pd.read_parquet(file.as_uri())
 
-    def save(self, name, data):
+    def save(self, name: str, data):
         file = self.path.joinpath(f"{name}.parquet")
         data.to_parquet(file.as_uri())
 
-    def remove(self, name):
+    def remove(self, name: str):
         file = self.path.joinpath(f"{name}.parquet")
         if file.exists():
             file.unlink()

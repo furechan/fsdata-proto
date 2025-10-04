@@ -19,12 +19,12 @@ from functools import lru_cache
 from .config import read_config
 from .collection import Collection
 
-__all__ = ["Collection"]
 
 
 @lru_cache
-def __getattr__(name: str):
-    """get collection as attribute"""
+def get(name: str) -> Collection:
+    """get collection by name"""
+
     config = read_config()
 
     if name.islower() and name in config:
@@ -34,10 +34,23 @@ def __getattr__(name: str):
         raise AttributeError(f"module 'fsdata' has no attribute '{name}'")
 
 
-def __dir__():
-    """list package contents including collection names"""
+def items():
+    """list available collection names"""
+
     config = read_config()
 
-    result = __all__ + [name.lower() for name in config.sections()]
+    result = [name.lower() for name in config.sections()]
 
     return result
+
+
+
+def __getattr__(name: str):
+    """get collection as attribute (legacy! do not use)"""
+    return get(name)
+
+
+def __dir__():
+    """list package contents including collection names (legacy! do not use)"""
+    return ["Collection"] + items()
+

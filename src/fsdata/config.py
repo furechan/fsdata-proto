@@ -7,9 +7,9 @@ from configparser import ConfigParser, Interpolation
 
 
 class ExpandVars(Interpolation):
-    """Interpolation to expand environment variables"""
+    """Interpolation which expands environment variables in values"""
 
-    def before_get(self, parser, section, option, value, defaults):
+    def before_read(self, parser, section, option, value):
         return os.path.expandvars(value)
 
 

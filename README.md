@@ -1,12 +1,13 @@
 # Simple data access layer over fsspec
 
 This is a thin abstraction layer over `fsspec` and `universal_pathlib` to access collections of data (dataframes) stored in the file system or in the cloud.
+
 The library reads a config file called `fsdata.ini` which defines a set of collections, each with their own location defined as a valid `fsspec` path.
-Each collection acts as a simple container of stored data blobs.
+Each collection acts as a simple container of stored dataframes.
 
 ## Configuration
 
-The configuration file `fsdata.ini` has one section for each collection, with the section name as name and with a key `path` pointing to its location.
+The configuration file `fsdata.ini` has one section for each collection, with the section name as name and with a key `path` pointing to its location. The `path` should be a acceptable `fsspec` path.
 
 ```ini
 # fsdata.ini
@@ -14,34 +15,38 @@ The configuration file `fsdata.ini` has one section for each collection, with th
 [workspace]
 path = ~/Documents/Workspace
 
-[samples]
-path = S3://mybucket/shared/samples
+[my-samples]
+path = S3://my-bucket/my-samples
 
 ```
 
-The config file is searched in the `FSDATA_CONFIG_DIRS` environment variable path if defined or else the standard unix config directories, `XDG_CONFIG_HOME` (or ~/.config) and `XDG_CONFIG_DIRS` (or /etc/xdg).
+The config file is searched in the `FSDATA_CONFIG_DIRS` environment variable path if defined or otherwize the standard unix config directories, `XDG_CONFIG_HOME` (or ~/.config) and `XDG_CONFIG_DIRS` (or /etc/xdg).
 
 ## Usage
 
-To access a given collection just use its name as attibute to `fsdata`
+To access a given collection just use the `get` method.
 
 ```python
 # Here `samples` is the name of a collection defined in `fsdata.ini`
 
-from fsdata import samples
+import fsdata
+
+samples = fsdata.get("my-sample")
 ```
 
 To list a collection items
-
 ```python
 samples.items()
 ```
 
-To load data
+Please note that item names do not include any extension.
+
+To load data use the `load` method.
 
 ```python
 samples.load(name)
 ```
+To save data use the `save` method.
 
 To save data
 ```python
@@ -50,7 +55,8 @@ samples.save(name, data)
 
 ## Formats
 
-Currently the library is limited to pandas dataframes saved in the `parquet` format.
+Currently, as a prototype, the library is limited
+to pandas dataframes saved in the `parquet` format.
 
 
 ## Installation

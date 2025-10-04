@@ -1,14 +1,11 @@
 import os
 import pandas as pd
 
-from pathlib import Path
+import fsdata
 
+from fsdata.testing import setup_environment 
 
-workdir = Path(__file__).parent.parent
-config_dir = workdir.joinpath("tests", "config")
-
-os.environ["WORKDIR"] = workdir.as_posix()
-os.environ["XDG_CONFIG_HOME"] = config_dir.as_posix()
+setup_environment()
 
 
 def test_workdir():
@@ -16,9 +13,7 @@ def test_workdir():
     assert os.path.exists(workdir)
 
 def test_fsdata():
-    from fsdata import testdata
+    testdata = fsdata.get("testdata")
     assert isinstance(testdata.items(), list)
-    assert isinstance(testdata.load("df"), pd.DataFrame)
-
-
+    assert isinstance(testdata.load("sample"), pd.DataFrame)
 
